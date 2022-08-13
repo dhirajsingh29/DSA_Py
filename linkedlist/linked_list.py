@@ -29,6 +29,24 @@ class SingleLinkedList:
 
         return head
 
+    def insert_cycle(self, head: Optional[Node], pos: int) -> Optional[Node]:
+        prev = head 
+        cur = head
+        curx = None
+        counter = 0
+
+        while cur:
+
+            if (counter == pos):
+                curx = cur
+            prev = cur
+            cur = cur.next
+            counter += 1
+
+        prev.next = curx
+        return head
+
+
     def display(self, head: Optional[Node]) -> None:
         if head is None:
             print('List is empty')
