@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Tuple
 
 class Node:
     def __init__(self, val=0, next=None):
@@ -46,6 +46,29 @@ class SingleLinkedList:
         prev.next = curx
         return head
 
+    def length(self, head: Optional[Node]) -> int:
+        len = 0
+
+        while head:
+            len += 1
+            head = head.next
+
+        return len
+
+    def create_intersection(self, headA: Node, headB: Node, headC: Node) -> Tuple:
+        cur_A = headA
+        cur_B = headB
+
+        while cur_A.next is not None:
+            cur_A = cur_A.next
+
+        while cur_B.next is not None:
+            cur_B = cur_B.next
+
+        cur_A.next = headC
+        cur_B.next = headC
+
+        return headA, headB
 
     def display(self, head: Optional[Node]) -> None:
         if head is None:
